@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block body %}
+<br>
+<div class="container"> 
+<h5>Welcome to Dashboard, {{user}}!</h5>
+<hr>
+<a class="btn btn-primary" href="{% url 'createrecord' %}" role="button">Add Ticket &nbsp; <i class="fa fa-plus" aria-hidden="true"></i></a>
+<hr>
+<table class="table table-hover table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Cisco_id</th>
+        <th scope="col">Description</th>
+        <th scope="col">Creation_date</th>
+        <th scope="col">Ticket_State</th>
+        <th scope="col">View</th>
+      </tr>
+    </thead>
+    <tbody class="table-light">
+        {% for record in records %}
+      <tr>
+        <th scope="row">{{record.id}}</th>
+        <td>{{record.Name}}</td>
+        <td>{{record.Cisco_id}}</td>
+        <td>{{record.Ticket_description}}</td>
+        <td>{{record.creation_date}}</td>
+        <td>{{record.Ticket_State}}</td>
+        
+        <td><a href="{% url 'viewrecord' record.id %}"><i class="fa fa-eye fa-2x" aria-hidden="true"></i> </a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock body%}

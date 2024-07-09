@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+<div class="card ">
+    <div class="card-header">
+        <h5>{{record.Cisco_id}}</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><strong>Name : </strong>{{record.Name|upper}}  </p>
+      <p class="card-text"><strong>Description : </strong>{{record.Ticket_description}}</p>
+      <p class="card-text"><strong>Status : </strong>{{record.Ticket_State}}  </p>
+      <p class="card-text"><strong>Created Date : </strong> {{record.creation_date}}</p>
+      
+    </div>
+  </div>
+  <br>
+  <a href="{% url 'dashboard' %}" class="btn btn-secondary mx-1">Back &nbsp; <i class="fa fa-hand-o-left" aria-hidden="true"></i></a>
+  <a href="{% url 'updaterecord' record.id %}" class="btn btn-primary mx-1">Update</a>
+  
+  <a href="{% url 'deleterecord' record.id %}" class="btn btn-danger mx-1">Delete &nbsp; <i class="fa fa-trash" aria-hidden="true"></i></a> 
+</div>
+{% endblock body %}
