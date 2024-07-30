@@ -13,7 +13,7 @@ def registeruser(request):
         form=registeration(request.POST)
         if form.is_valid():
             form.save()
-            return render(request,'loginpage.html')
+            return redirect('login')
         else:
             messages.error(request,"Invalid username or password")
             return redirect("register")
